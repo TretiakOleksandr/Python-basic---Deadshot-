@@ -1,0 +1,263 @@
+1. Create a folder called cursor_git_hw
+
+mkdir cursor_git_hw
+-----------------------------------------
+2. cd into the cursor_git_hw folder.
+
+ cd cursor_git_hw/
+-----------------------------------------
+3. Create a file called first.txt.
+
+touch first.txt
+-----------------------------------------
+4. Add first.txt to the staging area.
+
+git add first.txt 
+-----------------------------------------
+5. Commit with the message "adding first.txt".
+
+git commit -m "adding first.txt"
+
+  [master f79cc31] adding first.txt
+   1 file changed, 0 insertions(+), 0 deletions(-)
+   create mode 100644 homeworks/cursor_git_hw/first.txt
+-----------------------------------------
+6. Check out your commit with git log.
+
+git log
+
+  commit f79cc31d406e40695ea033c39e12881eab154d8f (HEAD -> master)
+  Author: Tretiak Oleksandr <zukaramba@gmail.com>
+  Date:   Mon Jun 20 16:32:21 2022 +0300
+
+      adding first.txt
+-----------------------------------------
+7. Create another file called second.txt.
+
+touch second.txt
+-----------------------------------------
+8. Add second.txt to the staging area.
+
+git add second.txt 
+-----------------------------------------
+9. Commit with the message "adding second.txt"
+
+git commit -m "adding second.txt"
+
+  [master 68851ed] adding second.txt
+   1 file changed, 0 insertions(+), 0 deletions(-)
+   create mode 100644 homeworks/cursor_git_hw/second.txt
+-----------------------------------------
+10. Remove the first.txt file
+
+rm first.txt 
+-----------------------------------------
+11. Add this change to the staging area
+
+cd ..
+git add cursor_git_hw/
+-----------------------------------------
+12. Commit with the message "removing first.txt"
+
+git commit -m "removing first.txt"
+
+  [master 7986ebd] removing first.txt
+   1 file changed, 0 insertions(+), 0 deletions(-)
+   delete mode 100644 homeworks/cursor_git_hw/first.txt
+-----------------------------------------
+13. Check out your commits using git log
+
+git log
+
+  commit 7986ebdaa813721ad88bf10eadc5aaf7c3c52476 (HEAD -> master)
+  Author: Tretiak Oleksandr <zukaramba@gmail.com>
+  Date:   Mon Jun 20 16:45:16 2022 +0300
+
+      removing first.txt
+
+  commit 68851ed55d2fa54c986670661239b5024109af1f
+  Author: Tretiak Oleksandr <zukaramba@gmail.com>
+  Date:   Mon Jun 20 16:40:14 2022 +0300
+
+      adding second.txt
+
+  commit f79cc31d406e40695ea033c39e12881eab154d8f
+  Author: Tretiak Oleksandr <zukaramba@gmail.com>
+  Date:   Mon Jun 20 16:32:21 2022 +0300
+
+      adding first.txt
+
+-----------------------------------------
+14. Push your changes to remote
+
+git push
+
+  Enumerating objects: 15, done.
+  Counting objects: 100% (15/15), done.
+  Delta compression using up to 12 threads
+  Compressing objects: 100% (7/7), done.
+  Writing objects: 100% (13/13), 1.12 KiB | 1.12 MiB/s, done.
+  Total 13 (delta 0), reused 1 (delta 0)
+  To github.com:TretiakOleksandr/Python-basic---Deadshot-.git
+     6333816..7986ebd  master -> master
+-----------------------------------------
+15. Create new branch from master called `first` (without checkouting)
+
+git branch first
+-----------------------------------------
+16. Create one more branch from master called `second` (with checkouting to it)
+
+git checkout -b second
+
+Switched to a new branch 'second'
+-----------------------------------------
+17. Change the second.txt file with "Hello" string.
+
+echo "Hello" > cursor_git_hw/second.txt 
+-----------------------------------------
+18. Stash you changes and checkout to first branch.
+
+git stash
+
+  Saved working directory and index state WIP on second: 7986ebd removing first.txt
+
+git checkout first
+
+  Switched to branch 'first'
+-----------------------------------------
+19. Checkout back and Stash Pop the changes.
+
+git checkout second 
+
+  Switched to branch 'second'
+
+git stash pop
+
+  On branch second
+  Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git restore <file>..." to discard changes in working directory)
+    	  modified:   cursor_git_hw/second.txt
+
+  no changes added to commit (use "git add" and/or "git commit -a")
+  Dropped refs/stash@{0} (cec1569af0ec396125dc0c52c0de5153ed4aa1cd)
+-----------------------------------------
+20. Add your changes to the staging area
+
+git add cursor_git_hw/
+-----------------------------------------
+21. Commit with the message "Changing second.txt".
+
+git commit -m "Changing second.txt"
+
+  [second 3f249c4] Changing second.txt
+   1 file changed, 1 insertion(+)
+-----------------------------------------
+22. Push your changes to remote
+
+git push --set-upstream origin second
+
+  Warning: Permanently added the ECDSA host key for IP address '140.82.121.4' to the list of known hosts.
+  Enumerating objects: 9, done.
+  Counting objects: 100% (9/9), done.
+  Delta compression using up to 12 threads
+  Compressing objects: 100% (2/2), done.
+  Writing objects: 100% (5/5), 414 bytes | 414.00 KiB/s, done.
+  Total 5 (delta 0), reused 0 (delta 0)
+  remote: 
+  remote: Create a pull request for 'second' on GitHub by visiting:
+  remote:      https://github.com/TretiakOleksandr/Python-basic---Deadshot-/pull/new/second
+  remote: 
+  To github.com:TretiakOleksandr/Python-basic---Deadshot-.git
+   * [new branch]      second -> second
+  Branch 'second' set up to track remote branch 'second' from 'origin'.
+-----------------------------------------
+23. Checkout to first branch.
+
+git checkout first
+
+  Switched to branch 'first'
+-----------------------------------------
+24. Change the second.txt file with "Cursor" string.
+
+echo "Cursor" > cursor_git_hw/second.txt 
+-----------------------------------------
+25. Add your changes to the staging area
+
+git add cursor_git_hw/
+-----------------------------------------
+26. Commit with the message "Changing second.txt".
+
+git commit -m "Changing second.txt"
+
+  [first 2060233] Changing second.txt
+   1 file changed, 1 insertion(+)
+-----------------------------------------
+27. Push your changes to remote
+
+git push --set-upstream origin first
+
+  Enumerating objects: 9, done.
+  Counting objects: 100% (9/9), done.
+  Delta compression using up to 12 threads
+  Compressing objects: 100% (2/2), done.
+  Writing objects: 100% (5/5), 415 bytes | 415.00 KiB/s, done.
+  Total 5 (delta 0), reused 0 (delta 0)
+  remote: 
+  remote: Create a pull request for 'first' on GitHub by visiting:
+  remote:      https://github.com/TretiakOleksandr/Python-basic---Deadshot-/pull/new/first
+  remote: 
+  To github.com:TretiakOleksandr/Python-basic---Deadshot-.git
+   * [new branch]      first -> first
+  Branch 'first' set up to track remote branch 'first' from 'origin'.
+-----------------------------------------
+28. Checkout to master branch
+
+git checkout master
+
+  Switched to branch 'master'
+  Your branch is up to date with 'origin/master'.
+-----------------------------------------
+29*. Merge the changes from second branch
+
+git merge second
+
+  Updating 7986ebd..3f249c4
+  Fast-forward
+   homeworks/cursor_git_hw/second.txt | 1 +
+   1 file changed, 1 insertion(+)
+-----------------------------------------
+30*. Then merge the changes from first branch
+
+git merge first
+
+  Auto-merging homeworks/cursor_git_hw/second.txt
+  CONFLICT (content): Merge conflict in homeworks/cursor_git_hw/second.txt
+  Automatic merge failed; fix conflicts and then commit the result.
+-----------------------------------------
+31*. Resolve conflict and push the changes to remote
+
+echo "Hello" > cursor_git_hw/second.txt 
+
+git add cursor_git_hw/
+
+git commit -m "Resolving conflict"
+
+  [master d2b4dab] Resolving conflict
+
+git merge first
+
+  Already up to date.
+
+git push
+
+  Enumerating objects: 13, done.
+  Counting objects: 100% (13/13), done.
+  Delta compression using up to 12 threads
+  Compressing objects: 100% (2/2), done.
+  Writing objects: 100% (5/5), 444 bytes | 444.00 KiB/s, done.
+  Total 5 (delta 0), reused 0 (delta 0)
+  To github.com:TretiakOleksandr/Python-basic---Deadshot-.git
+     7986ebd..d2b4dab  master -> master
+
+
